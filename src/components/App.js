@@ -1,5 +1,4 @@
-import React, { Component, useState } from 'react';
-//import scrolltobottom from "react-scroll-to-bottom";
+import React, {  useState } from 'react';
 import "../components/App.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.min.css';
@@ -22,9 +21,7 @@ function App() {
 
  //Filter the info-json data w.r.t dearch input
   const item = Information.filter((data) =>{
-    const items = Information.map(data =>{
-      return data.items;
-    });
+    
   //check weather input, if not send the data ; if input found check the same with includes
   // not able to get the  logic for array in object i.e items
     if(search == null){
@@ -43,11 +40,12 @@ function App() {
 
   return (
    
-    <div className = "outerContainer">
-       <div >
-       <i className ="fa fa-search" style = {{"position" : "absolute"}}aria-hidden="true"></i>
+    <div className = "outer-container" >
+       
+       <i className ="fa fa-search search" style = {{"position" : "absolute"}}aria-hidden="true"  ></i>
       <input  text ="text"  placeholder= "Search user by ID Name Address Pincode...." onChange ={e => searchSpace(e)}  />
-      </div>
+            <button ><a href='/'>X</a></button>
+      <div className ="inner">
       {/*if mesasage not set to true than no match found*/}
       {/*if search not set then no data displayed*/}
       {message ? (search ? item.map(data =>{
@@ -63,10 +61,11 @@ function App() {
             <span>{data.pincode}</span><br />
             
         </ul>
-      </div>
+        </div>
+      
     )
   }):null):<h5>No Match found</h5>
-      }
+      }</div>
       
     </div>
    
